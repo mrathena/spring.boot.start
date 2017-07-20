@@ -12,7 +12,7 @@ public class UserController {
 	@RequestMapping("{username}")
 	public String index(Model model, @PathVariable("username") String username) {
 		model.addAttribute("username", username);
-		// 页面放到src/main/resources/templates下
+		// 页面被称为模板, 放到src/main/resources/templates下
 		return "user/index";
 	}
 	
