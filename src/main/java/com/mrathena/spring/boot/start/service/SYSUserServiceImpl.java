@@ -6,9 +6,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.mrathena.spring.boot.start.constant.Constants;
 import com.mrathena.spring.boot.start.dao.SYSUserMapper;
 import com.mrathena.spring.boot.start.entity.SYSUser;
 
@@ -22,8 +24,8 @@ public class SYSUserServiceImpl implements SYSUserService {
 	
 	@Override
 	public PageInfo<SYSUser> getAllUsers(Integer size, Integer index) {
-		size = size == null ? 10 : size;
-		index = index == null ? 1 : index;
+		size = size == null ? Constants.DEFAULT_PAGINATOR_SIZE : size;
+		index = index == null ? Constants.DEFAULT_PAGINATOR_INDEX : index;
 		PageHelper.startPage(index, size);
 		List<SYSUser> users = userDao.selectAll();
 		return new PageInfo<SYSUser>(users, 9);
