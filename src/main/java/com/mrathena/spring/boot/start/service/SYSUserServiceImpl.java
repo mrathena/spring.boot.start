@@ -7,32 +7,35 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.mrathena.spring.boot.start.dao.SYSUserMapper;
 import com.mrathena.spring.boot.start.entity.SYSUser;
 
 @Service
 public class SYSUserServiceImpl implements SYSUserService {
 
-	private Logger log = LoggerFactory.getLogger(getClass());
+	Logger log = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
 	private SYSUserMapper userDao;
 	
 	@Override
-	public List<SYSUser> getAllUsers() {
-		log.info("SYSUserServiceImpl.getAllUsers");
-		return userDao.selectAll();
+	public PageInfo<SYSUser> getAllUsers(Integer size, Integer index) {
+		size = size == null ? 10 : size;
+		index = index == null ? 1 : index;
+		PageHelper.startPage(index, size);
+		List<SYSUser> users = userDao.selectAll();
+		return new PageInfo<SYSUser>(users, 9);
 	}
 
 	@Override
 	public boolean insertUser(SYSUser user) {
-		log.info("SYSUserServiceImpl.insertUser");
 		return userDao.insertSelective(user) != 0;
 	}
 
 	@Override
 	public boolean deleteUser(Long userId) {
-		log.info("SYSUserServiceImpl.deleteUser");
 		return userDao.deleteByPrimaryKey(userId) != 0;
 	}
 

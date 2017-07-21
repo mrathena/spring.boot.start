@@ -1,12 +1,11 @@
 package com.mrathena.spring.boot.start.service;
 
-import java.util.List;
-
+import com.github.pagehelper.PageInfo;
 import com.mrathena.spring.boot.start.entity.SYSUser;
 
 public interface SYSUserService {
 
-	List<SYSUser> getAllUsers();
+	PageInfo<SYSUser> getAllUsers(Integer size, Integer index);
 	
 	boolean insertUser(SYSUser user);
 	

@@ -21,6 +21,13 @@ public class Application {
 	@Autowired
 	private Environment env;
 	
+	// thymeleaf-extras-data-attribute, 给Thymeleaf添加Dialect(DataAttributeDialect)
+	// data:foo="${'bar'}"会转换成data-foo="bar", 否则需要th:attr="data-foo=${'bar'}"
+	@Bean
+	public DataAttributeDialect getDataAttributeDialect() {
+		return new DataAttributeDialect();
+	}
+	
 	// destroy-method="close"的作用是当数据库连接不使用的时候,就把该连接重新放到数据池中,方便下次使用调用.
 	@Bean(destroyMethod = "close")
 	public DataSource getDataSource() {
@@ -30,13 +37,6 @@ public class Application {
 		ds.setUsername(env.getProperty("spring.datasource.username"));
 		ds.setPassword(env.getProperty("spring.datasource.password"));
 		return ds;
-	}
-	
-	// thymeleaf-extras-data-attribute, 给Thymeleaf添加Dialect(DataAttributeDialect)
-	// data:foo="${'bar'}"会转换成data-foo="bar", 否则需要th:attr="data-foo=${'bar'}"
-	@Bean
-	public DataAttributeDialect getDataAttributeDialect() {
-	    return new DataAttributeDialect();
 	}
 	
 }
