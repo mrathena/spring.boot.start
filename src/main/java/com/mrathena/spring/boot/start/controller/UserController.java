@@ -32,9 +32,16 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping("insert")
-	public void insert() {
+	public void insert(SYSUser user) {
 		log.info("UserController.insert");
-		userService.insertUser(new SYSUser().withUsername("mrathena").withPassword("password").withNickname("mrathena"));
+		userService.insertUser(user);
+	}
+	
+	@ResponseBody
+	@RequestMapping("delete")
+	public void delete(Long id) {
+		log.info("UserController.delete");
+		userService.deleteUser(id);
 	}
 	
 }

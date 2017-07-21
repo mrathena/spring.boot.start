@@ -10,4 +10,6 @@ public interface SYSUserService {
 	
 	boolean insertUser(SYSUser user);
 	
+	boolean deleteUser(Long userId);
+	
 }

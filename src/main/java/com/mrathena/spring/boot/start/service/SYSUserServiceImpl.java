@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mrathena.spring.boot.start.dao.SYSUserDao;
+import com.mrathena.spring.boot.start.dao.SYSUserMapper;
 import com.mrathena.spring.boot.start.entity.SYSUser;
 
 @Service
@@ -16,7 +16,7 @@ public class SYSUserServiceImpl implements SYSUserService {
 	private Logger log = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
-	private SYSUserDao userDao;
+	private SYSUserMapper userDao;
 	
 	@Override
 	public List<SYSUser> getAllUsers() {
@@ -27,7 +27,13 @@ public class SYSUserServiceImpl implements SYSUserService {
 	@Override
 	public boolean insertUser(SYSUser user) {
 		log.info("SYSUserServiceImpl.insertUser");
-		return userDao.insert(user) != 0;
+		return userDao.insertSelective(user) != 0;
+	}
+
+	@Override
+	public boolean deleteUser(Long userId) {
+		log.info("SYSUserServiceImpl.deleteUser");
+		return userDao.deleteByPrimaryKey(userId) != 0;
 	}
 
 }
