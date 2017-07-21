@@ -80,6 +80,6 @@
 		where id = #{id,jdbcType=BIGINT}
 	</select>
 	<select id="selectAll" resultType="com.mrathena.spring.boot.start.entity.SYSUser">
-		select * from sys_user
+		select * from sys_user order by id
 	</select>
 </mapper>

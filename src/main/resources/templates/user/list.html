@@ -13,25 +13,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="table-responsive">
-					<table class="table table-striped table-bordered table-hover table-condensed ">
-						<tr><th>ID</th><th>Username</th><th>Password</th><th>Nickname</th><th>Operation</th></tr>
-						<tr th:each="user : ${users}">
-							<td th:text="${user.id}"></td>
-							<td th:text="${user.username}"></td>
-							<td th:text="${user.password}"></td>
-							<td th:text="${user.nickname}"></td>
-							<td>
-								<button class="deleteUser" data:id="${user.id}" data:name="${user.id}">删除</button>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</div>
-		<div class="row">
+		<div class="row pt20">
 			<div class="col-sm-12">
 				<form id="form" class="form-inline">
 					<div class="form-group">
@@ -48,6 +30,24 @@
 					</div>
 					<button id="addUser" class="btn btn-default">添加用户</button>
 				</form>
+			</div>
+		</div>
+		<div class="row pt20">
+			<div class="col-sm-12">
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered table-hover table-condensed ">
+						<tr><th>ID</th><th>Username</th><th>Password</th><th>Nickname</th><th>Operation</th></tr>
+						<tr th:each="user : ${users}">
+							<td th:text="${user.id}"></td>
+							<td th:text="${user.username}"></td>
+							<td th:text="${user.password}"></td>
+							<td th:text="${user.nickname}"></td>
+							<td>
+								<button class="deleteUser" data:id="${user.id}" data:name="${user.id}">删除</button>
+							</td>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
