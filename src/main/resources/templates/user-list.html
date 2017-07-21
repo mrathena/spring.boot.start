@@ -46,7 +46,7 @@ $(document).ready(function() {
 	});
 	$(document).on("click", ".deleteUser", function() {
 		$.post("/user/delete", {id: $(this).data("id")}, function(response) {
-			$("#pagination").html(response);
+			location.reload();
 		});
 	});
 });
