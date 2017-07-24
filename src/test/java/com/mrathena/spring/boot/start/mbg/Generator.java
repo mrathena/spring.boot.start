@@ -36,7 +36,7 @@ public class Generator {
 		for (String warning : warnings) {
 			System.out.println(warning);
 		}
-		System.out.println("MyBatis Generator finfish work");
+		System.out.println("MyBatis Generator finfish work1");
 	}
 
 }
