@@ -1,4 +1,4 @@
-package com.mrathena.spring.boot.start;
+package com.mrathena.spring.boot.start.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
