@@ -12,7 +12,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /* 
- * http://IP:port/{context-path}/swagger-ui.html 
+ * http://ip:port/{context-path}/swagger-ui.html 
  * eg:http://localhost/swagger-ui.html 
  */ 
 
