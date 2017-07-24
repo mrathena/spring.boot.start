@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
@@ -24,7 +25,7 @@ public class UserController {
 	@Autowired
 	private SYSUserService userService;
 
-	@RequestMapping("list")
+	@RequestMapping(value = "list", method = {RequestMethod.GET, RequestMethod.POST})
 	public String list(Model model, HttpServletRequest request, Integer size, Integer index) {
 		PageInfo<SYSUser> page = userService.getAllUsers(size, index);
 		model.addAttribute("page", page);
@@ -35,13 +36,13 @@ public class UserController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("insert")
+	@RequestMapping(value = "insert", method = RequestMethod.POST)
 	public void insert(SYSUser user) {
 		userService.insertUser(user);
 	}
 	
 	@ResponseBody
-	@RequestMapping("delete")
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
 	public void delete(Long id) {
 		userService.deleteUser(id);
 	}
